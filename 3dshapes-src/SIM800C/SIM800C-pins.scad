@@ -15,9 +15,9 @@ include <defines.scad>
 module PinPads() {
   color("Gold")
   for(i = [0 : 11]) {
-    translate([-w/2-0.02, h/2 - 2.75 - 0.3 - i * 1.1, -0.02])
+    translate([-w/2-0.02, h/2 - 2.75 + 0.3 - i * 1.1, -0.02])
       cube(size = [0.5, 0.6, 0.84]);
-    translate([ w/2+0.02-0.5, h/2 - 2.75 - 0.3 - i * 1.1, -0.02])
+    translate([ w/2+0.02-0.5, h/2 - 2.75 + 0.3 - i * 1.1, -0.02])
       cube(size = [0.5, 0.6, 0.84]);
   }
   for(i = [0 : 8]) {

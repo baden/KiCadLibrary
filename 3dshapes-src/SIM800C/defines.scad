@@ -8,5 +8,5 @@
 // PCB
 
 w = 15.7;
-h = 17.0;
+h = 17.6;
 pin_fragments = 8;
