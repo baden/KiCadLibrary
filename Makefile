@@ -1,4 +1,4 @@
-.PHONY: models
+.PHONY: models clean distclean
 
 SRC_PATH := 3dshapes-src
 BUILD_PATH := 3dshapes
@@ -13,15 +13,43 @@ MODELS := SIM800C
 DEPS := $(patsubst %,$(SRC_PATH)/%/Makefile,$(MODELS))
 
 TARGETS =
+TEMP_FILES =
 
-define color
-	@sed \
-		-e 's/diffuseColor.*/diffuseColor $(1)/g' \
-		-e 's/specularColor.*/specularColor $(2)/g'
+all: models
+
+# Color table {diffuseColor},{specularColor}
+#
+# Green
+COLOR_PCB := 0 0.33 0
+# Gold
+COLOR_PIN := 1.0 0.83 0
+# Silver shield
+COLOR_SHIELD := 0.5 0.5 0.5
+# White paper label
+COLOR_LABEL := 1.0 1.0 1.0
+# Pin1 red marker
+COLOR_RED_DOT := 1.0 0 0
+
+# Создает правило для сборки фрагмента компонента.
+define rule
+
+$(TEMP_PATH)/$(1).stl: $(SRC_PATH)/$(1).scad
+	@echo "$$<  →  $$@"
+	@$(MKDIR) $(dir $(TEMP_PATH)/$(1).stl)
+	@$(OPENSCAD) $$< -o $$@ 2>$$@.err
+
+$(BUILD_PATH)/$(1).wrl: $(TEMP_PATH)/$(1).wrl
+	@echo "$$<  →  $$@"
+	@$(MKDIR) $(dir $(BUILD_PATH)/$(1).wrl)
+	@sed -e 's/diffuseColor.*/diffuseColor $(2)/g' -e '/specularColor.*/d' $$< >$$@
+
+TARGETS += $(BUILD_PATH)/$(1).wrl
+TEMP_FILES += $(TEMP_PATH)/$(1).stl $(TEMP_PATH)/$(1).wrl
+
 endef
 
-
 -include $(DEPS)
+
 
 .SUFFIXES:: .wrl .stl
 
@@ -29,14 +57,8 @@ VPATH := $(TEMP_PATH)
 
 %.wrl: %.stl
 	@$(MKDIR) $(dir $@)
-	@echo "$<"  →  "$@"
-	@$(MESHCONV) $< -c wrl
-
-# $(BUILD_PATH)/%.wrl: $(TEMP_PATH)/%.stl Makefile $(DEPS)
-# 	echo Make "$@" from "@<"
-#
-# $(TEMP_PATH)/%.stl: $(SRC_PATH)/%.scad
-# 	echo Make "$@" from "@<"
+	@echo "$<  →  $@"
+	@$(MESHCONV) $< -c wrl >/dev/null
 
 #
 # use this like:
@@ -47,3 +69,9 @@ print-%:
 	@echo $* is $($*)
 
 models: $(TARGETS)
+
+clean:
+	@rm -f $(TEMP_FILES)
+
+distclean: clean
+	@rm -f $(TARGETS)
