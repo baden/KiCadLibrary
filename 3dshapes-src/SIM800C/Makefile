@@ -11,6 +11,8 @@ $(eval $(call rule,SIM800C/SIM800C-label,$(COLOR_LABEL)))
 # Pin1 (red)
 $(eval $(call rule,SIM800C/SIM800C-pin1,$(COLOR_RED_DOT)))
 
+MODELS += SIM800C
+
 .PHONY: model-SIM800C
 
 model-SIM800C:

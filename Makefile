@@ -8,10 +8,18 @@ OPENSCAD := openscad
 MESHCONV := ./tools/meshconv
 MKDIR := mkdir -p
 
-MODELS := SIM800C
+# recursive wildcard function, call with params:
+#  - start directory (finished with /) or empty string for current dir
+#  - glob pattern
+# (taken from http://blog.jgc.org/2011/07/gnu-make-recursive-wildcard-function.html)
+rwildcard=$(foreach d,$(wildcard $1*),$(call rwildcard,$d/,$2) $(filter $(subst *,%,$2),$d))
 
-DEPS := $(patsubst %,$(SRC_PATH)/%/Makefile,$(MODELS))
 
+DEPS := $(call rwildcard,$(SRC_PATH)/,*Makefile)
+# DEPS := $(patsubst %,$(SRC_PATH)/%/Makefile,$(MODELS))
+
+# MODELS = SIM800C
+MODELS =
 TARGETS =
 TEMP_FILES =
 

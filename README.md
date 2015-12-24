@@ -30,6 +30,20 @@ svn checkout https://github.com/baden/KiCadLibrary/trunk/3dshapes && rm -rf 3dsh
 
 ## Просмотр моделей в OpenSCAD
 
+Список моделей можно посмотреть выполнив команду:
+
 ```
-    model-SIM800C
+    make print-MODELS
+```
+
+Посмотреть модель в OpenSCAD можно выполнив
+
+```
+    make model-{Название модели}
+```
+
+например:
+
+```
+    make model-SIM800C
 ```
