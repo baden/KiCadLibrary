@@ -47,7 +47,27 @@
   (pad 43 smd oval (at -4.4 8.8 90) (size 1.8 0.6) (layers F.Cu F.Paste F.Mask))
   (pad 43 smd oval (at -3.3 8.8 90) (size 1.8 0.6) (layers F.Cu F.Paste F.Mask))
   (pad 43 smd oval (at -2.2 8.8 90) (size 1.8 0.6) (layers F.Cu F.Paste F.Mask))
-  (model ${KIPRJMOD}/3dshapes/SIM800C-full.wrl
+  (model ${KIPRJMOD}/3dshapes/SIM800C/SIM800C-pcb.wrl
+    (at (xyz 0 0 0))
+    (scale (xyz 0.3937 0.3937 0.3937))
+    (rotate (xyz 0 0 0))
+  )
+  (model ${KIPRJMOD}/3dshapes/SIM800C/SIM800C-pins.wrl
+    (at (xyz 0 0 0))
+    (scale (xyz 0.3937 0.3937 0.3937))
+    (rotate (xyz 0 0 0))
+  )
+  (model ${KIPRJMOD}/3dshapes/SIM800C/SIM800C-shield.wrl
+    (at (xyz 0 0 0))
+    (scale (xyz 0.3937 0.3937 0.3937))
+    (rotate (xyz 0 0 0))
+  )
+  (model ${KIPRJMOD}/3dshapes/SIM800C/SIM800C-label.wrl
+    (at (xyz 0 0 0))
+    (scale (xyz 0.3937 0.3937 0.3937))
+    (rotate (xyz 0 0 0))
+  )
+  (model ${KIPRJMOD}/3dshapes/SIM800C/SIM800C-pin1.wrl
     (at (xyz 0 0 0))
     (scale (xyz 0.3937 0.3937 0.3937))
     (rotate (xyz 0 0 0))
