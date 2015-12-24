@@ -46,13 +46,18 @@ $(TEMP_PATH)/$(1).stl: $(SRC_PATH)/$(1).scad
 	@$(MKDIR) $(dir $(TEMP_PATH)/$(1).stl)
 	@$(OPENSCAD) $$< -o $$@ 2>$$@.err
 
-$(BUILD_PATH)/$(1).wrl: $(TEMP_PATH)/$(1).wrl
-	@echo "$$<  →  $$@"
-	@$(MKDIR) $(dir $(BUILD_PATH)/$(1).wrl)
-	@sed -e 's/diffuseColor.*/diffuseColor $(2)/g' -e '/specularColor.*/d' $$< >$$@
+# $(BUILD_PATH)/$(1).wrl: $(TEMP_PATH)/$(1).wrl
+# 	@echo "$$<  →  $$@"
+# 	@$(MKDIR) $(dir $(BUILD_PATH)/$(1).wrl)
+# 	@sed -e 's/diffuseColor.*/diffuseColor $(2)/g' -e '/specularColor.*/d' $$< >$$@
 
-TARGETS += $(BUILD_PATH)/$(1).wrl
-TEMP_FILES += $(TEMP_PATH)/$(1).stl $(TEMP_PATH)/$(1).wrl
+$(TEMP_PATH)/$(1).wrp: $(TEMP_PATH)/$(1).wrl
+	@echo "$$<  →  $$@"
+	@$(MKDIR) $(dir $(TEMP_PATH)/$(1).wrp)
+	@sed -e 's/diffuseColor.*/diffuseColor $(2)/g' -e '/specularColor.*/d' $$< | \
+	sed '1,/children/d' | head -n -2 >$$@
+
+TEMP_FILES += $(TEMP_PATH)/$(1).stl $(TEMP_PATH)/$(1).wrl $(TEMP_PATH)/$(1).wrp $(TEMP_PATH)/$(1).stl.err
 
 endef
 

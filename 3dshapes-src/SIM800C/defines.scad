@@ -9,4 +9,4 @@
 
 w = 15.7;
 h = 17.6;
-pin_fragments = 8;
+pin_fragments = 16;
