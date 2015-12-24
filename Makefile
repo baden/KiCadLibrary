@@ -61,6 +61,28 @@ TEMP_FILES += $(TEMP_PATH)/$(1).stl $(TEMP_PATH)/$(1).wrl $(TEMP_PATH)/$(1).wrp 
 
 endef
 
+# $1 = Component name
+define assemble
+
+$(foreach part,$(PARTS_$1),$(eval $(call rule,$(1)/$(1)-$(part),$(COLOR_$(1)_$(part)))))
+
+TARGETS += $(BUILD_PATH)/$(1).wrl
+MODELS += $(1)
+
+.PHONY: model-$(1)
+
+model-$(1):
+	$(OPENSCAD) $(SRC_PATH)/$(1)/$(1).scad
+
+PARTS_$1_WRPS := $(patsubst %,$(TEMP_PATH)/$(1)/$(1)-%.wrp,$(PARTS_$1))
+
+$(BUILD_PATH)/$(1).wrl: $$(PARTS_$1_WRPS)
+	@echo "Multiple [$$(PARTS_$1_WRPS)]  →  $$@"
+	cat vrml-start.tpl $$(PARTS_$1_WRPS) vrml-stop.tpl >$$@
+
+endef
+
+
 -include $(DEPS)
 
 

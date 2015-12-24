@@ -50,6 +50,7 @@ module PinDrills() {
 
 // Combine together
 
+scale(scale)
 difference() {
   union() {
 

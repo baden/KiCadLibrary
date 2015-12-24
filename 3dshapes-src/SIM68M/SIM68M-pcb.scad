@@ -1,19 +1,11 @@
-
-// example012.stl is Mblock.stl, (c) 2009 Will Langford
-// licensed under the Creative Commons - GNU GPL license.
-// http://www.thingiverse.com/thing:753
-
-//import("sim800c.stl", convexity=3);
-
 include <defines.scad>
-
 
 // Pcb
 
 module Pcb() {
   color("Green")
   translate([-w/2, -h/2])
-    cube(size = [w, h, 0.8], center = false);
+    cube(size = [w, h, pcb_t], center = false);
 
 }
 
@@ -28,11 +20,8 @@ module PadPin(o_x, o_y, d_x, d_y, cnt) {
 }
 
 module PadDrills() {
-    PadPin(-w/2 + 3.45,  h/2, 1.1, 0, 9);
-    PadPin(-w/2 + 3.45, -h/2, 1.1, 0, 9);
-
-    PadPin(-w/2, h/2 - 2.75, 0, -1.1, 12);
-    PadPin( w/2, h/2 - 2.75, 0, -1.1, 12);
+    PadPin(-w/2, h/2 - 0.65, 0, -1.1, 12);
+    PadPin( w/2, h/2 - 0.65, 0, -1.1, 12);
 }
 
 // Combine together

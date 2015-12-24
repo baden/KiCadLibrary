@@ -11,7 +11,10 @@ include <defines.scad>
 
 // SHIELD
 
+sw = w - 2.0;
+sh = h - 1.0;
+
 color("Silver")
   scale(scale)
-  translate([-13.9/2, -15.8/2, 0.8])
-    cube(size = [13.9, 15.8, 1.5], center = false);
+  translate([-sw/2, -sh/2, pcb_t])
+    cube(size = [sw, sh, t - pcb_t], center = false);

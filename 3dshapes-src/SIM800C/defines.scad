@@ -10,3 +10,5 @@
 w = 15.7;
 h = 17.6;
 pin_fragments = 16;
+
+scale = 1/2.54;

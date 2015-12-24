@@ -9,9 +9,7 @@
 
 include <defines.scad>
 
-// SHIELD
-
-color("Silver")
+color("Red")
   scale(scale)
-  translate([-13.9/2, -15.8/2, 0.8])
-    cube(size = [13.9, 15.8, 1.5], center = false);
+  translate([-w/2 + 2.5,  h/2 - 2.0, t+0.02])
+    cylinder(r = 0.5, h = 0.02, $fn = 16);

@@ -7,11 +7,8 @@
 
 // PCB
 
-include <defines.scad>
-
-// SHIELD
-
-color("Silver")
-  scale(scale)
-  translate([-13.9/2, -15.8/2, 0.8])
-    cube(size = [13.9, 15.8, 1.5], center = false);
+include <SIM68M-pcb.scad>
+include <SIM68M-pins.scad>
+include <SIM68M-shield.scad>
+include <SIM68M-label.scad>
+include <SIM68M-pin1.scad>

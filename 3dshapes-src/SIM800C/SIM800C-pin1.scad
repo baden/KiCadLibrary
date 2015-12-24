@@ -10,5 +10,6 @@
 include <defines.scad>
 
 color("Red")
+  scale(scale)
   translate([-12.9/2 + 1,  14.8/2 - 1, 2.32])
     cylinder(r = 0.5, h = 0.02, $fn = 16);
