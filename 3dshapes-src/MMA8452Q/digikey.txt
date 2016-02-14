@@ -1,0 +1,6 @@
+Digi-Key Part Number: MMA8452QR1TR-ND
+Digi-Key URL: http://www.digikey.com/product-detail/en/MMA8452QR1/MMA8452QR1TR-ND/2508917
+Datasheet-URL: http://cache.freescale.com/files/sensors/doc/data_sheet/MMA8452Q.pdf
+Drawings:
+Drawings:
+Drawings:

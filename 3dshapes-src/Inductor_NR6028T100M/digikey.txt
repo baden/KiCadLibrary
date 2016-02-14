@@ -1,0 +1,6 @@
+Digi-Key Part Number: 587-2102-1-ND
+Digi-Key URL: http://www.digikey.com/product-detail/en/NR6028T100M/587-2102-1-ND/1866242
+Datasheet-URL: http://www.yuden.co.jp/productdata/catalog/en/wound04_e.pdf
+Drawings: http://media.digikey.com/pdf/Catalog%20Drawings/Inductors/NR60(12,20,28,45),NRS6010%20Series%20Bottom.jpg
+Drawings: http://media.digikey.com/pdf/Catalog%20Drawings/Inductors/NR60(12,20,28,45),NRS6010%20Series%20Top.jpg
+Drawings: http://media.digikey.com/pdf/Catalog%20Drawings/Inductors/NR6028%20Series%20Side.jpg
