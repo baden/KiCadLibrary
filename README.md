@@ -23,7 +23,7 @@ svn checkout https://github.com/baden/KiCadLibrary/trunk/3dshapes && rm -rf 3dsh
 ## Используемые инструменты и зависимости
 
 * [OpenSCAD](http://www.openscad.org/)
-* [instantreality](http://www.instantreality.org/) (console tool **aopt**)
+* convert from ImageMagick
 
 ## Сборка 3d-моделей из исходников
 
