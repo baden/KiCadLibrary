@@ -4,6 +4,7 @@ SRC_PATH := 3dshapes-src
 BUILD_PATH := 3dshapes
 TEMP_PATH := tmp
 IMAGES_PATH := images
+MODELS_PATH := models
 
 OPENSCAD := openscad
 MESHCONV := ./tools/meshconv
@@ -132,13 +133,15 @@ print-%:
 
 models: $(TARGETS)
 
-TARGETS_X3D := $(TARGETS:.wrl=.x3d)
+# TARGETS_X3D := $(TARGETS:.wrl=.x3d)
+TARGETS_X3D := $(patsubst $(BUILD_PATH)/%.wrl,$(MODELS_PATH)/%.x3d,$(TARGETS))
 
 models_x3d:	$(TARGETS_X3D)
 
-%.x3d: %.wrl
+$(MODELS_PATH)/%.x3d: $(BUILD_PATH)/%.wrl
 	@echo "$<  →  $@"
-	@aopt -i $< -x $@
+	@#aopt -i $< -x $@
+	CLASSPATH=tools/Vrml97ToX3dNist.jar java iicm.vrml.vrml2x3d.vrml2x3d $< $@
 
 # IMAGES := $(TARGETS:%1.wrl:)
 IMAGES := $(patsubst $(BUILD_PATH)/%.wrl,$(IMAGES_PATH)/%.gif,$(TARGETS))
