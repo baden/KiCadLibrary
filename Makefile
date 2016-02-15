@@ -86,7 +86,7 @@ $(BUILD_PATH)/$(1).wrl: $$(PARTS_$1_WRPS)
 $(IMAGES_PATH)/$(1).png: $(SRC_PATH)/$(1)/$(1).scad
 	@echo "$$<  →  $$@"
 	@$(MKDIR) $$(dir $$@)
-	$(OPENSCAD) $$< -o $$@ --imgsize=512,512
+	$(OPENSCAD) $$< -o $$@ --imgsize=512,512 --colorscheme=Nature
 	convert "$$@" -resize 128x128 "$$@"
 
 TEMP_PNGS_$(1) := $(patsubst %,tmp/$(1)/image-%.png,${SEQ})
@@ -95,7 +95,7 @@ TEMP_FILES += TEMP_PNGS_$(1)
 $(TEMP_PATH)/$(1)/image-%.png: $(SRC_PATH)/$(1)/$(1).scad
 	@echo "$$<  →  $$@ (p: $$(@:tmp/$(1)/image-%.png=%) )"
 	@$(MKDIR) tmp/$(1)
-	@$(OPENSCAD) $$< -o $$@ --imgsize=1024,512 --camera=0,0,0,55,0,$$(@:tmp/$(1)/image-%.png=%),10
+	@$(OPENSCAD) $$< -o $$@ --imgsize=1024,512 --camera=0,0,0,55,0,$$(@:tmp/$(1)/image-%.png=%),10 --colorscheme=Nature
 
 $(IMAGES_PATH)/$(1).gif: $$(TEMP_PNGS_$(1))
 	@echo "$$<  →  $$@"
