@@ -20,6 +20,11 @@
 svn checkout https://github.com/baden/KiCadLibrary/trunk/3dshapes && rm -rf 3dshapes/.svn
 ```
 
+## Используемые инструменты и зависимости
+
+* [OpenSCAD](http://www.openscad.org/)
+* [instantreality](http://www.instantreality.org/) (console tool **aopt**)
+
 ## Сборка 3d-моделей из исходников
 
 Данный репозиторий используется как рабочая библиотека. Поэтому не забывайте перед публикацией изменений пересобирать модели.
@@ -56,3 +61,5 @@ svn checkout https://github.com/baden/KiCadLibrary/trunk/3dshapes && rm -rf 3dsh
 4. MMA8452Q ![MMA8452Q](images/MMA8452Q.png)
 
 Автоматичеки обновляемый [список инимированных моделей](List.md)
+
+On-line [3D-модели](http://baden.github.io/KiCadLibrary/)

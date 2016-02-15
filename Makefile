@@ -24,7 +24,7 @@ MODELS =
 TARGETS =
 TEMP_FILES =
 
-all: models images
+all: models images models_x3d
 
 # Color table {diffuseColor},{specularColor}
 #
@@ -129,7 +129,16 @@ VPATH := $(TEMP_PATH)
 print-%:
 	@echo $* is $($*)
 
+
 models: $(TARGETS)
+
+TARGETS_X3D := $(TARGETS:.wrl=.x3d)
+
+models_x3d:	$(TARGETS_X3D)
+
+%.x3d: %.wrl
+	@echo "$<  →  $@"
+	@aopt -i $< -x $@
 
 # IMAGES := $(TARGETS:%1.wrl:)
 IMAGES := $(patsubst $(BUILD_PATH)/%.wrl,$(IMAGES_PATH)/%.gif,$(TARGETS))
