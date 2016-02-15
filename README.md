@@ -25,7 +25,7 @@ svn checkout https://github.com/baden/KiCadLibrary/trunk/3dshapes && rm -rf 3dsh
 Данный репозиторий используется как рабочая библиотека. Поэтому не забывайте перед публикацией изменений пересобирать модели.
 
 ```
-    make models
+    make
 ```
 
 ## Просмотр моделей в OpenSCAD
@@ -47,3 +47,12 @@ svn checkout https://github.com/baden/KiCadLibrary/trunk/3dshapes && rm -rf 3dsh
 ```
     make model-SIM800C
 ```
+
+## Список моделей в библиотеке
+
+1. SIM68 ![SIM68M](images/SIM68M.png)
+2. SIM800C ![SI800C](images/SIM800C.png)
+3. Inductor_NR6028T100M ![SI800C](images/Inductor_NR6028T100M.png)
+4. MMA8452Q ![MMA8452Q](images/MMA8452Q.png)
+
+Автоматичеки обновляемый [список](List.md)

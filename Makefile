@@ -1,8 +1,9 @@
-.PHONY: models clean distclean
+.PHONY: models images clean distclean
 
 SRC_PATH := 3dshapes-src
 BUILD_PATH := 3dshapes
 TEMP_PATH := tmp
+IMAGES_PATH := images
 
 OPENSCAD := openscad
 MESHCONV := ./tools/meshconv
@@ -23,7 +24,7 @@ MODELS =
 TARGETS =
 TEMP_FILES =
 
-all: models
+all: models images
 
 # Color table {diffuseColor},{specularColor}
 #
@@ -80,6 +81,13 @@ $(BUILD_PATH)/$(1).wrl: $$(PARTS_$1_WRPS)
 	@echo "Multiple [$$(PARTS_$1_WRPS)]  →  $$@"
 	cat vrml-start.tpl $$(PARTS_$1_WRPS) vrml-stop.tpl >$$@
 
+$(IMAGES_PATH)/$(1).png: $(SRC_PATH)/$(1)/$(1).scad
+	@echo "$$<  →  $$@"
+	@$(MKDIR) $$(dir $$@)
+	$(OPENSCAD) $$< -o $$@ --imgsize=512,512
+	convert "$$@" -resize 128x128 "$$@"
+
+
 endef
 
 
@@ -100,10 +108,35 @@ VPATH := $(TEMP_PATH)
 # 'make print-PATH print-CFLAGS make print-ALL_OBJS'
 # to see the value of make variable PATH and CFLAGS, ALL_OBJS, etc.
 #
+# examples:
+#
+# make print-TARGETS
+#
 print-%:
 	@echo $* is $($*)
 
 models: $(TARGETS)
+
+# IMAGES := $(TARGETS:%1.wrl:)
+IMAGES := $(patsubst $(BUILD_PATH)/%.wrl,$(IMAGES_PATH)/%.png,$(TARGETS))
+
+# $(IMAGES_PATH)/%.png: $(SRC_PATH)/%/%.scad
+# $(IMAGES_PATH)/$(1).png: $(SRC_PATH)/$(1)/$(1).scad
+# 	@echo "$<  →  $@"
+# 	echo TBD
+# 	# $(OPENSCAD) $< -o $@
+#
+# $(IMAGES_PATH)/MMA8452Q.png: $(SRC_PATH)/MMA8452Q/MMA8452Q.scad
+# 	@echo "$<  →  $@"
+# 	echo TBD
+
+images: $(IMAGES)
+	echo -n "## Список компонентов библиотеки\n\n" > List.md
+	for i in $(MODELS) ; do \
+		(echo "1. $$i ![$$i]($(IMAGES_PATH)/$$i.png)" >> List.md) ; \
+	done
+	# $(foreach IMG,$(IMAGES), \
+	# 	echo -n "$(IMG)\n" > List.md)
 
 clean:
 	@rm -f $(TEMP_FILES)
