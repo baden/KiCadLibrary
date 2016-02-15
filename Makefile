@@ -95,12 +95,12 @@ TEMP_FILES += TEMP_PNGS_$(1)
 $(TEMP_PATH)/$(1)/image-%.png: $(SRC_PATH)/$(1)/$(1).scad
 	@echo "$$<  →  $$@ (p: $$(@:tmp/$(1)/image-%.png=%) )"
 	@$(MKDIR) tmp/$(1)
-	@$(OPENSCAD) $$< -o $$@ --imgsize=1024,512 --camera=0,0,0,55,0,$$(@:tmp/$(1)/image-%.png=%),10 --colorscheme=Nature
+	@$(OPENSCAD) $$< -o $$@ --imgsize=2048,1024 --camera=0,0,0,65,0,$$(@:tmp/$(1)/image-%.png=%),11 --colorscheme=Nature
 
 $(IMAGES_PATH)/$(1).gif: $$(TEMP_PNGS_$(1))
-	@echo "$$<  →  $$@"
+	@echo "$(TEMP_PATH)/$(1)/image-*.png  →  $$@"
 	@$(MKDIR) $$(dir $$@)
-	@convert '$(TEMP_PATH)/$(1)/image-*.png' -resize 256x128 -set delay 1x25 $$@
+	@convert '$(TEMP_PATH)/$(1)/image-*.png' -resize 512x256 -set delay 1x12 $$@
 
 endef
 
