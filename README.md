@@ -55,4 +55,4 @@ svn checkout https://github.com/baden/KiCadLibrary/trunk/3dshapes && rm -rf 3dsh
 3. Inductor_NR6028T100M ![SI800C](images/Inductor_NR6028T100M.png)
 4. MMA8452Q ![MMA8452Q](images/MMA8452Q.png)
 
-Автоматичеки обновляемый [список](List.md)
+Автоматичеки обновляемый [список инимированных моделей](List.md)

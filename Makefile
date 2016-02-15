@@ -62,6 +62,8 @@ TEMP_FILES += $(TEMP_PATH)/$(1).stl $(TEMP_PATH)/$(1).wrl $(TEMP_PATH)/$(1).wrp 
 
 endef
 
+SEQ := $(shell seq -w 0 4 359)
+
 # $1 = Component name
 define assemble
 
@@ -87,6 +89,18 @@ $(IMAGES_PATH)/$(1).png: $(SRC_PATH)/$(1)/$(1).scad
 	$(OPENSCAD) $$< -o $$@ --imgsize=512,512
 	convert "$$@" -resize 128x128 "$$@"
 
+TEMP_PNGS_$(1) := $(patsubst %,tmp/$(1)/image-%.png,${SEQ})
+TEMP_FILES += TEMP_PNGS_$(1)
+
+$(TEMP_PATH)/$(1)/image-%.png: $(SRC_PATH)/$(1)/$(1).scad
+	@echo "$$<  →  $$@ (p: $$(@:tmp/$(1)/image-%.png=%) )"
+	@$(MKDIR) tmp/$(1)
+	@$(OPENSCAD) $$< -o $$@ --imgsize=1024,512 --camera=0,0,0,55,0,$$(@:tmp/$(1)/image-%.png=%),10
+
+$(IMAGES_PATH)/$(1).gif: $$(TEMP_PNGS_$(1))
+	@echo "$$<  →  $$@"
+	@$(MKDIR) $$(dir $$@)
+	@convert '$(TEMP_PATH)/$(1)/image-*.png' -resize 256x128 -set delay 1x25 $$@
 
 endef
 
@@ -118,7 +132,8 @@ print-%:
 models: $(TARGETS)
 
 # IMAGES := $(TARGETS:%1.wrl:)
-IMAGES := $(patsubst $(BUILD_PATH)/%.wrl,$(IMAGES_PATH)/%.png,$(TARGETS))
+IMAGES := $(patsubst $(BUILD_PATH)/%.wrl,$(IMAGES_PATH)/%.gif,$(TARGETS))
+IMAGES += $(patsubst $(BUILD_PATH)/%.wrl,$(IMAGES_PATH)/%.png,$(TARGETS))
 
 # $(IMAGES_PATH)/%.png: $(SRC_PATH)/%/%.scad
 # $(IMAGES_PATH)/$(1).png: $(SRC_PATH)/$(1)/$(1).scad
@@ -131,12 +146,14 @@ IMAGES := $(patsubst $(BUILD_PATH)/%.wrl,$(IMAGES_PATH)/%.png,$(TARGETS))
 # 	echo TBD
 
 images: $(IMAGES)
-	echo -n "## Список компонентов библиотеки\n\n" > List.md
-	for i in $(MODELS) ; do \
-		(echo "1. $$i ![$$i]($(IMAGES_PATH)/$$i.png)" >> List.md) ; \
+	@# echo -n "## Список компонентов библиотеки\n\n" > List.md
+	@echo -n "## Список компонентов библиотеки\n\n<div style=\"background-color:lightyellow\">\n" > List.md
+
+	@# (echo "1. $$i ![$$i]($(IMAGES_PATH)/$$i.gif)" >> List.md) ;
+	@for i in $(MODELS) ; do \
+		(echo "<p>![$$i]($(IMAGES_PATH)/$$i.gif) $$i</p>" >> List.md) ; \
 	done
-	# $(foreach IMG,$(IMAGES), \
-	# 	echo -n "$(IMG)\n" > List.md)
+	@echo "</div>" >> List.md
 
 clean:
 	@rm -f $(TEMP_FILES)
