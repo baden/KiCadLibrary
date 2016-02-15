@@ -146,14 +146,11 @@ IMAGES += $(patsubst $(BUILD_PATH)/%.wrl,$(IMAGES_PATH)/%.png,$(TARGETS))
 # 	echo TBD
 
 images: $(IMAGES)
-	@# echo -n "## Список компонентов библиотеки\n\n" > List.md
-	@echo -n "## Список компонентов библиотеки\n\n<div style=\"background-color:lightyellow\">\n" > List.md
+	@ echo -n "## Список компонентов библиотеки\n\n" > List.md
 
-	@# (echo "1. $$i ![$$i]($(IMAGES_PATH)/$$i.gif)" >> List.md) ;
 	@for i in $(MODELS) ; do \
-		(echo "<p>![$$i]($(IMAGES_PATH)/$$i.gif) $$i</p>" >> List.md) ; \
+		(echo "1. ![$$i]($(IMAGES_PATH)/$$i.gif) $$i" >> List.md) ; \
 	done
-	@echo "</div>" >> List.md
 
 clean:
 	@rm -f $(TEMP_FILES)
