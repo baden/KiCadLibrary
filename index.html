@@ -12,13 +12,20 @@
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-      <script src="http://www.x3dom.org/release/x3dom.js"></script>
-      <link rel="stylesheet" href="http://www.x3dom.org/release/x3dom.css">
-      <style>
-          x3d {
-              border: none;
-          }
-      </style>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js" ></script>
+    <script src="http://www.x3dom.org/release/x3dom.js"></script>
+    <link rel="stylesheet" href="http://www.x3dom.org/release/x3dom.css">
+    <style>
+        x3d {
+            border: none;
+        }
+        table.gallery tr td {
+            cursor: pointer;
+        }
+        table.gallery tr td:hover {
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+        }
+    </style>
   </head>
   <body>
     <div class="wrapper">
@@ -39,41 +46,37 @@
         <h3>
 <a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Список моделей.</h3>
 
-<p>Тренируюсь с http://doc.x3dom.org/tutorials/basics/hello/index.html</p>
-
 <x3d width='500px' height='500px'>
-  <scene>
+  <scene id="mainScene">
       <viewpoint position="-3.34 -7.78 5.32" orientation="0.92 -0.2 -0.33 1.07"></viewpoint>
-      <inline url="https://raw.githubusercontent.com/baden/KiCadLibrary/master/models/Inductor_NR6028T100M.x3d"> </inline>
+      <inline id="inlineBox" nameSpaceName="dcm" url="https://raw.githubusercontent.com/baden/KiCadLibrary/master/models/Inductor_NR6028T100M.x3d"> </inline>
   </scene>
 </x3d>
-<p>Inductor_NR6028T100M</p>
-
-<x3d width='500px' height='400px'>
-  <scene>
-      <viewpoint position="-3.34 -7.78 5.32" orientation="0.92 -0.2 -0.33 1.07"></viewpoint>
-      <inline url="https://raw.githubusercontent.com/baden/KiCadLibrary/master/models/MMA8452Q.x3d"> </inline>
-  </scene>
-</x3d>
-<p>MMA8452Q</p>
-
-<x3d width='500px' height='400px'>
-  <scene>
-      <viewpoint position="-3.34 -7.78 5.32" orientation="0.92 -0.2 -0.33 1.07"></viewpoint>
-      <inline url="https://raw.githubusercontent.com/baden/KiCadLibrary/master/models/SIM68M.x3d"> </inline>
-  </scene>
-</x3d>
-<p>SIM68M</p>
-
-<x3d width='500px' height='400px'>
-  <scene>
-      <viewpoint position="-3.34 -7.78 5.32" orientation="0.92 -0.2 -0.33 1.07"></viewpoint>
-      <inline url="https://raw.githubusercontent.com/baden/KiCadLibrary/master/models/SIM800C.x3d"> </inline>
-  </scene>
-</x3d>
-<p>SIM800C</p>
 
 
+<table id="demo_table" class="gallery">
+	 <tr>
+	    <td file="Inductor_NR6028T100M.x3d"><img src="https://raw.githubusercontent.com/baden/KiCadLibrary/master/images/Inductor_NR6028T100M.png" width="128" height="128" /><p>Inductor_NR6028T100M</p></td>
+	    <td file="MMA8452Q.x3d"><img src="https://raw.githubusercontent.com/baden/KiCadLibrary/master/images/MMA8452Q.png" width="128" height="128" /><p>MMA8452Q</p></td>
+	    <td file="SIM68M.x3d"><img src="https://raw.githubusercontent.com/baden/KiCadLibrary/master/images/SIM68M.png" width="128" height="128" /><p>SIM68M</p></td>
+	    <td file="SIM800C.x3d"><img src="https://raw.githubusercontent.com/baden/KiCadLibrary/master/images/SIM800C.png" width="128" height="128" /><p>SIM800C</p></td>
+    </tr>
+</table>
+
+<script>
+$(document).ready(function(){
+		//Every time the user clicks on a catalogue entry
+		$(".gallery td").on("click", function() {
+			var file = "https://raw.githubusercontent.com/baden/KiCadLibrary/master/models/" + $(this).attr('file');
+
+			//Replace the x3d file in the context (if not already loaded)
+			if(file != $('#inlineBox').attr('url'))
+				$('#inlineBox').attr('url', file);
+		});
+	});
+</script>
+
+<p>Тренируюсь с <a href="http://doc.x3dom.org/tutorials/basics/hello/index.html">http://doc.x3dom.org/tutorials/basics/hello/index.html</a></p>
 
       </section>
       <footer>
