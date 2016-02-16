@@ -62,9 +62,10 @@
 	    <td file="Inductor_NR6028T100M.x3d"><img src="https://raw.githubusercontent.com/baden/KiCadLibrary/master/images/Inductor_NR6028T100M.png" width="128" height="128" /><p>Inductor_NR6028T100M</p></td>
 	    <td file="MMA8452Q.x3d"><img src="https://raw.githubusercontent.com/baden/KiCadLibrary/master/images/MMA8452Q.png" width="128" height="128" /><p>MMA8452Q</p></td>
       <td file="FUSE_1812.x3d"><img src="https://raw.githubusercontent.com/baden/KiCadLibrary/master/images/FUSE_1812.png" width="128" height="128" /><p>FUSE_1812</p></td>
-	    <td file="SIM68M.x3d"><img src="https://raw.githubusercontent.com/baden/KiCadLibrary/master/images/SIM68M.png" width="128" height="128" /><p>SIM68M</p></td>
+      <td file="FUSE_1206.x3d"><img src="https://raw.githubusercontent.com/baden/KiCadLibrary/master/images/FUSE_1206.png" width="128" height="128" /><p>FUSE_1206</p></td>
     </tr>
     <tr>
+      <td file="SIM68M.x3d"><img src="https://raw.githubusercontent.com/baden/KiCadLibrary/master/images/SIM68M.png" width="128" height="128" /><p>SIM68M</p></td>
 	    <td file="SIM800C.x3d"><img src="https://raw.githubusercontent.com/baden/KiCadLibrary/master/images/SIM800C.png" width="128" height="128" /><p>SIM800C</p></td>
     </tr>
 </table>
@@ -78,7 +79,7 @@ $(document).ready(function(){
 			//Replace the x3d file in the context (if not already loaded)
 			if(file != $('#inlineBox').attr('url'))
 				$('#inlineBox').attr('url', file);
-      $(this).parent().find('td').removeClass('active');
+      $(this).parent().parent().find('td').removeClass('active');
       $(this).addClass('active');
 		});
 	});
