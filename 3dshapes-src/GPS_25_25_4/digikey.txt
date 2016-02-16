@@ -1,0 +1,3 @@
+Digi-Key Part Number: 311-1539-ND
+Digi-Key URL: http://www.digikey.com/product-search/en?mpart=ANT2525B00DT1516S&v=13
+Datasheet-URL: http://www.yageo.com/documents/recent/An_GPS&Glonass_Proto_25254_PIN_Type0D_0.pdf
