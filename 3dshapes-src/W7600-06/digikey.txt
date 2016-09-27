@@ -1,0 +1,7 @@
+This is analog.
+Original is: https://bitbucket.org/badenwork/6000-06/downloads/W7600-XXPRNTW0R(S41).pdf
+
+Digi-Key Part Number: 455-2247-ND
+Digi-Key URL: http://www.digikey.com/product-detail/en/jst-sales-america-inc/B2B-XH-A(LF)(SN)/455-2247-ND/1651045
+Datasheet-URL: http://www.jst-mfg.com/product/pdf/eng/eXH.pdf
+Drawings: http://media.digikey.com/photos/JST%20Photos/B2B-XH-A(LF)(SN).jpg
