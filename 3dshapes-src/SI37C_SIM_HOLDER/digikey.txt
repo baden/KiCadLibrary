@@ -1,0 +1,4 @@
+Digi-Key Part Number:
+Digi-Key URL:
+Datasheet-URL:
+Drawings: https://bitbucket.org/badenwork/6000-06/downloads/SI37C-08200.pdf

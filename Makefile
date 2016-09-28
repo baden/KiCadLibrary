@@ -96,7 +96,7 @@ TEMP_FILES += TEMP_PNGS_$(1)
 $(TEMP_PATH)/$(1)/image-%.png: $(SRC_PATH)/$(1)/$(1).scad
 	@echo "$$<  →  $$@ (p: $$(@:tmp/$(1)/image-%.png=%) )"
 	@$(MKDIR) tmp/$(1)
-	@$(OPENSCAD) $$< -o $$@ --imgsize=2048,1024 --camera=0,0,0,65,0,$$(@:tmp/$(1)/image-%.png=%),11 --colorscheme=Nature
+	@$(OPENSCAD) $$< -o $$@ --imgsize=2048,1024 --camera=0,0,0,55,0,$$(@:tmp/$(1)/image-%.png=%),11 --colorscheme=Nature
 
 $(IMAGES_PATH)/$(1).gif: $$(TEMP_PNGS_$(1))
 	@echo "$(TEMP_PATH)/$(1)/image-*.png  →  $$@"
