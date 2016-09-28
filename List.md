@@ -2,6 +2,7 @@
 
 1. ![Inductor_NR6028T100M](images/Inductor_NR6028T100M.gif) Inductor_NR6028T100M
 1. ![FUSE_1812](images/FUSE_1812.gif) FUSE_1812
+1. ![FUSE_AC250V](images/FUSE_AC250V.gif) FUSE_AC250V
 1. ![GPS_25_25_4](images/GPS_25_25_4.gif) GPS_25_25_4
 1. ![W7600-02](images/W7600-02.gif) W7600-02
 1. ![FUSE_1206](images/FUSE_1206.gif) FUSE_1206
