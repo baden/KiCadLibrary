@@ -1,10 +1,10 @@
 (module SI37C_SIM_HOLDER (layer F.Cu) (tedit 57EB79E4)
   (descr SI37C_SIM_HOLDER)
   (tags "SIM CARD HOLDER")
-  (fp_text reference REF** (at 0 -1) (layer F.SilkS)
+  (fp_text reference S1 (at 0 -1) (layer F.SilkS)
     (effects (font (size 1 1) (thickness 0.15)))
   )
-  (fp_text value 2 (at 0 1) (layer F.Fab)
+  (fp_text value S (at 0 1) (layer F.Fab)
     (effects (font (size 1 1) (thickness 0.15)))
   )
   (fp_text user GND (at 2.54 -3.5 90) (layer Dwgs.User)
@@ -49,7 +49,7 @@
   (pad 7 smd rect (at -2.54 -5.9) (size 1 1.1) (layers F.Cu F.Paste F.Mask))
   (pad 2 smd rect (at 0 5.9) (size 1 1.1) (layers F.Cu F.Paste F.Mask))
   (pad "" np_thru_hole circle (at 4.6 -4.15) (size 0.7 0.7) (drill 0.7) (layers *.Cu *.Mask))
-  (model /home/baden/SDK/baden.work/gps/6000/6000-06-alex/3dshapes/SI37C_SIM_HOLDER.wrl
+  (model ${KIPRJMOD}/3dshapes/SI37C_SIM_HOLDER.wrl
     (at (xyz 0 0 0))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 0))

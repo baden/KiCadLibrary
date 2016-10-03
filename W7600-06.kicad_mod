@@ -1,10 +1,10 @@
 (module W7600-06 (layer F.Cu) (tedit 57EACE89)
   (descr W7600-06)
   (tags "Wafer connector")
-  (fp_text reference Х2 (at 0 3.5) (layer F.SilkS)
+  (fp_text reference W6 (at 0 3.5) (layer F.SilkS)
     (effects (font (size 1 1) (thickness 0.15)))
   )
-  (fp_text value 2 (at 0 3.5) (layer F.Fab)
+  (fp_text value 1 (at 0 3.5) (layer F.Fab)
     (effects (font (size 1 1) (thickness 0.15)))
   )
   (fp_line (start 8.7 2.35) (end 8.7 -3.4) (layer F.SilkS) (width 0.15))
@@ -17,7 +17,7 @@
   (pad 4 thru_hole circle (at -1.25 0) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask F.SilkS))
   (pad 2 thru_hole circle (at 3.75 0) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask F.SilkS))
   (pad 3 thru_hole circle (at 1.25 0) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask F.SilkS))
-  (model /home/baden/SDK/baden.work/gps/6000/6000-06-alex/3dshapes/W7600-06.wrl
+  (model ${KIPRJMOD}/3dshapes/W7600-06.wrl
     (at (xyz 0 0 0))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 0))
