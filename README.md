@@ -55,13 +55,4 @@ svn checkout https://github.com/baden/KiCadLibrary/trunk/3dshapes && rm -rf 3dsh
 
 ## Список моделей в библиотеке
 
-1. SIM68 ![SIM68M](images/SIM68M.png)
-2. SIM800C ![SI800C](images/SIM800C.png)
-3. Inductor_NR6028T100M ![SI800C](images/Inductor_NR6028T100M.png)
-4. MMA8452Q ![MMA8452Q](images/MMA8452Q.png)
-5. FUSE_1812 ![FUSE_1812](images/FUSE_1812.png)
-6. FUSE_1206 ![FUSE_1206](images/FUSE_1206.png)
-
-Автоматичеки обновляемый [список инимированных моделей](List.md)
-
 On-line [3D-модели](http://baden.github.io/KiCadLibrary/)

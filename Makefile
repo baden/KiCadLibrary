@@ -63,7 +63,7 @@ TEMP_FILES += $(TEMP_PATH)/$(1).stl $(TEMP_PATH)/$(1).wrl $(TEMP_PATH)/$(1).wrp 
 
 endef
 
-SEQ := $(shell seq -w 0 4 359)
+# SEQ := $(shell seq -w 0 4 359)
 
 # $1 = Component name
 define assemble
@@ -90,18 +90,18 @@ $(IMAGES_PATH)/$(1).png: $(SRC_PATH)/$(1)/$(1).scad
 	$(OPENSCAD) $$< -o $$@ --imgsize=512,512 --colorscheme=Nature
 	convert "$$@" -resize 128x128 "$$@"
 
-TEMP_PNGS_$(1) := $(patsubst %,tmp/$(1)/image-%.png,${SEQ})
-TEMP_FILES += TEMP_PNGS_$(1)
+# TEMP_PNGS_$(1) := $(patsubst %,tmp/$(1)/image-%.png,${SEQ})
+# TEMP_FILES += TEMP_PNGS_$(1)
 
 $(TEMP_PATH)/$(1)/image-%.png: $(SRC_PATH)/$(1)/$(1).scad
 	@echo "$$<  →  $$@ (p: $$(@:tmp/$(1)/image-%.png=%) )"
 	@$(MKDIR) tmp/$(1)
 	@$(OPENSCAD) $$< -o $$@ --imgsize=2048,1024 --camera=0,0,0,55,0,$$(@:tmp/$(1)/image-%.png=%),11 --colorscheme=Nature
 
-$(IMAGES_PATH)/$(1).gif: $$(TEMP_PNGS_$(1))
-	@echo "$(TEMP_PATH)/$(1)/image-*.png  →  $$@"
-	@$(MKDIR) $$(dir $$@)
-	@convert '$(TEMP_PATH)/$(1)/image-*.png' -resize 512x256 -set delay 1x12 $$@
+# $(IMAGES_PATH)/$(1).gif: $$(TEMP_PNGS_$(1))
+# 	@echo "$(TEMP_PATH)/$(1)/image-*.png  →  $$@"
+# 	@$(MKDIR) $$(dir $$@)
+# 	@convert '$(TEMP_PATH)/$(1)/image-*.png' -resize 512x256 -set delay 1x12 $$@
 
 endef
 
@@ -144,7 +144,7 @@ $(MODELS_PATH)/%.x3d: $(BUILD_PATH)/%.wrl
 	CLASSPATH=tools/Vrml97ToX3dNist.jar java iicm.vrml.vrml2x3d.vrml2x3d $< $@
 
 # IMAGES := $(TARGETS:%1.wrl:)
-IMAGES := $(patsubst $(BUILD_PATH)/%.wrl,$(IMAGES_PATH)/%.gif,$(TARGETS))
+# IMAGES := $(patsubst $(BUILD_PATH)/%.wrl,$(IMAGES_PATH)/%.gif,$(TARGETS))
 IMAGES += $(patsubst $(BUILD_PATH)/%.wrl,$(IMAGES_PATH)/%.png,$(TARGETS))
 
 # $(IMAGES_PATH)/%.png: $(SRC_PATH)/%/%.scad
@@ -158,11 +158,10 @@ IMAGES += $(patsubst $(BUILD_PATH)/%.wrl,$(IMAGES_PATH)/%.png,$(TARGETS))
 # 	echo TBD
 
 images: $(IMAGES)
-	@ echo -n "## Список компонентов библиотеки\n\n" > List.md
-	@for i in $(MODELS) ; do \
-		(echo "1. ![$$i]($(IMAGES_PATH)/$$i.gif) $$i" >> List.md) ; \
-	done
-
+	# @ echo -n "## Список компонентов библиотеки\n\n" > List.md
+	# @for i in $(MODELS) ; do \
+	# 	(echo "1. ![$$i]($(IMAGES_PATH)/$$i.gif) $$i" >> List.md) ; \
+	# done
 	@echo -n "[" > list.json
 	@D= ; for i in $(MODELS) ; do \
 		(echo -n "$$D\"$$i\"" >> list.json) ; D=, ; \
