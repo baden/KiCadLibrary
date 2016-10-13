@@ -13,6 +13,8 @@
     <![endif]-->
 
     <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js" ></script>
+    <script type="text/javascript" src="http://underscorejs.org/underscore-min.js" ></script>
+
     <script src="http://www.x3dom.org/release/x3dom.js"></script>
     <link rel="stylesheet" href="http://www.x3dom.org/release/x3dom.css">
     <style>
@@ -58,31 +60,63 @@
 
 
 <table id="demo_table" class="gallery">
-	 <tr>
-	    <td file="Inductor_NR6028T100M.x3d"><img src="https://raw.githubusercontent.com/baden/KiCadLibrary/master/images/Inductor_NR6028T100M.png" width="128" height="128" /><p>Inductor_NR6028T100M</p></td>
-	    <td file="MMA8452Q.x3d"><img src="https://raw.githubusercontent.com/baden/KiCadLibrary/master/images/MMA8452Q.png" width="128" height="128" /><p>MMA8452Q</p></td>
-      <td file="FUSE_1812.x3d"><img src="https://raw.githubusercontent.com/baden/KiCadLibrary/master/images/FUSE_1812.png" width="128" height="128" /><p>FUSE_1812</p></td>
-      <td file="FUSE_1206.x3d"><img src="https://raw.githubusercontent.com/baden/KiCadLibrary/master/images/FUSE_1206.png" width="128" height="128" /><p>FUSE_1206</p></td>
-    </tr>
-    <tr>
-      <td file="SIM68M.x3d"><img src="https://raw.githubusercontent.com/baden/KiCadLibrary/master/images/SIM68M.png" width="128" height="128" /><p>SIM68M</p></td>
-	    <td file="SIM800C.x3d"><img src="https://raw.githubusercontent.com/baden/KiCadLibrary/master/images/SIM800C.png" width="128" height="128" /><p>SIM800C</p></td>
-	    <td file="GPS_25_25_4.x3d"><img src="https://raw.githubusercontent.com/baden/KiCadLibrary/master/images/GPS_25_25_4.png" width="128" height="128" /><p>GPS_25_25_4</p></td>
-    </tr>
 </table>
 
 <script>
 $(document).ready(function(){
-		//Every time the user clicks on a catalogue entry
-		$(".gallery td").on("click", function() {
-			var file = "https://raw.githubusercontent.com/baden/KiCadLibrary/master/models/" + $(this).attr('file');
 
-			//Replace the x3d file in the context (if not already loaded)
-			if(file != $('#inlineBox').attr('url'))
-				$('#inlineBox').attr('url', file);
-      $(this).parent().parent().find('td').removeClass('active');
-      $(this).addClass('active');
-		});
+    // Please not use this code!!!
+    // Realy! Not do it!
+    // This code is SUX!
+    var repo = "https://raw.githubusercontent.com/baden/KiCadLibrary/master/";
+
+    var list = repo + "list.json";
+
+    var maper = function(marker, item) {
+      var last = _.last(marker);
+      if(last.length < 4) {
+        last.push(item);
+      } else {
+        marker.push([item]);
+      }
+      return marker;
+    }
+
+    var maper3 = function(marker, item) {
+      var col = '' +
+        '<td file="' + item + '.x3d">' +
+          '<img src="'+repo+'images/' + item + '.png" width="128" height="128" />' +
+          '<p>' + item + '</p>' +
+        '</td>';
+      return marker + col;
+    }
+
+    var maper2 = function(marker, item) {
+      // console.log("item=", item);
+      var c = _.reduce(item, maper3, "");
+      var row = "<tr>" + c + "</tr>";
+      return marker + row;
+    }
+
+    $.getJSON(list , function( models ) {
+      v = _.reduce(models, maper, [[]]);
+      // console.log(["v=", v]);
+      r = _.reduce(v, maper2, "");
+      // console.log(["r=", r]);
+      $(".gallery").html(r);
+
+      // for(var m in models.plit)
+      $(".gallery td").on("click", function() {
+        var file = repo + "/models/" + $(this).attr('file');
+
+        //Replace the x3d file in the context (if not already loaded)
+        if(file != $('#inlineBox').attr('url'))
+        $('#inlineBox').attr('url', file);
+        $(this).parent().parent().find('td').removeClass('active');
+        $(this).addClass('active');
+      });
+    });
+
 	});
 </script>
 
