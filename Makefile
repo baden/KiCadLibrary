@@ -159,10 +159,15 @@ IMAGES += $(patsubst $(BUILD_PATH)/%.wrl,$(IMAGES_PATH)/%.png,$(TARGETS))
 
 images: $(IMAGES)
 	@ echo -n "## Список компонентов библиотеки\n\n" > List.md
-
 	@for i in $(MODELS) ; do \
 		(echo "1. ![$$i]($(IMAGES_PATH)/$$i.gif) $$i" >> List.md) ; \
 	done
+
+	@echo -n "[" > list.json
+	@D= ; for i in $(MODELS) ; do \
+		(echo -n "$$D\"$$i\"" >> list.json) ; D=, ; \
+	done
+	@ echo -n "]\n" >> list.json
 
 clean:
 	@rm -f $(TEMP_FILES)
