@@ -1,0 +1,4 @@
+Digi-Key Part Number: 609-4613-1-ND
+Digi-Key URL: http://www.digikey.com/product-detail/en/amphenol-fci/10118192-0001LF/609-4613-1-ND/2785378
+Datasheet-URL: http://portal.fciconnect.com/Comergent//fci/drawing/10118192.pdf
+Drawings: http://portal.fciconnect.com/Comergent//fci/drawing/10118192.pdf
