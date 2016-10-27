@@ -7,7 +7,7 @@ import re
 print "Изменение размеров после генерации компонента из картинки"
 
 parser = argparse.ArgumentParser(description='Process some integers.')
-parser.add_argument('zoom', metavar='zoom', type=int, nargs=1,
+parser.add_argument('zoom', metavar='zoom', type=float, nargs=1,
                    help='zoom factor')
 parser.add_argument('input', metavar='input', type=str, nargs=1,
                    help='input library')
