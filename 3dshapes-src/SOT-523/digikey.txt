@@ -1,0 +1,7 @@
+Digi-Key Part Number:
+Digi-Key URL:
+Datasheet-URL: https://bitbucket.org/badenwork/pl600-pcb/downloads/DMG1013T-7.pdf
+Datasheet-URL: https://bitbucket.org/badenwork/pl600-pcb/downloads/MMBD4448HTC-7-F.pdf
+Drawings:
+Drawings:
+Drawings:
