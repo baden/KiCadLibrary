@@ -1,0 +1,8 @@
+(module WLCSP-16_4x4_1.65x1.65mm_Pitch0.4mm (layer F.Cu) (tedit 5A0C3CC0)
+  (fp_text reference REF** (at 0 0.5) (layer F.SilkS)
+    (effects (font (size 1 1) (thickness 0.15)))
+  )
+  (fp_text value WLCSP-16_4x4_1.65x1.65mm_Pitch0.4mm (at 0 -0.5) (layer F.Fab)
+    (effects (font (size 1 1) (thickness 0.15)))
+  )
+)
