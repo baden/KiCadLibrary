@@ -1,0 +1,5 @@
+Digi-Key Part Number:
+Digi-Key URL:
+Manufacture name: PTS525_SM15_SMTR2_LFS
+Datasheet-URL:
+Drawings: 
