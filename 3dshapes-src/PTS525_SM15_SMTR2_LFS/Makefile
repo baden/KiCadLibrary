@@ -1,0 +1,8 @@
+# Component parts
+PARTS_PTS525_SM15_SMTR2_LFS = body pins key
+
+COLOR_PTS525_SM15_SMTR2_LFS_body = 0.7 0.7 0.7
+COLOR_PTS525_SM15_SMTR2_LFS_pins = 0.7 0.7 0.7
+COLOR_PTS525_SM15_SMTR2_LFS_key = 0.9 0.9 0.9
+
+$(eval $(call assemble,PTS525_SM15_SMTR2_LFS))
