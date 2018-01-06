@@ -1,7 +1,7 @@
-(module TC2030-MCP (layer F.Cu) (tedit 58094127)
+(module TC2030-MCP (layer F.Cu) (tedit 5A4E8189)
   (descr TC2030-MCP)
   (tags W)
-  (fp_text reference W5 (at 0.4 0 -270) (layer F.Fab)
+  (fp_text reference W5 (at 0.4 0 90) (layer F.Fab)
     (effects (font (size 0.5 0.5) (thickness 0.05)))
   )
   (fp_text value W5 (at 0.4 1.6) (layer F.Fab) hide
