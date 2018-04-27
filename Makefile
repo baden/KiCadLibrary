@@ -1,14 +1,22 @@
-.PHONY: models images clean distclean
+.SILENT:
+.PHONY: models images clean distclean add_to_kicad
 
 SRC_PATH := 3dshapes-src
+SRC_SYMBOLS_PATH := symbols-src
+SYMBOLS := symbols.lib
 BUILD_PATH := 3dshapes
 TEMP_PATH := tmp
 IMAGES_PATH := images
 MODELS_PATH := models
+FOOTPRINTS_PATH := footprints
 
 OPENSCAD := openscad
 MESHCONV := ./tools/meshconv
 MKDIR := mkdir -p
+
+KICAD_COMMON_CONFIG := ~/.config/kicad/kicad_common
+KICAD_LIB_CONFIG := ~/.config/kicad/sym-lib-table
+KICAD_FP_LIB_CONFIG := ~/.config/kicad/fp-lib-table
 
 # recursive wildcard function, call with params:
 #  - start directory (finished with /) or empty string for current dir
@@ -20,12 +28,14 @@ rwildcard=$(foreach d,$(wildcard $1*),$(call rwildcard,$d/,$2) $(filter $(subst 
 DEPS := $(call rwildcard,$(SRC_PATH)/,*Makefile)
 # DEPS := $(patsubst %,$(SRC_PATH)/%/Makefile,$(MODELS))
 
+ALL_SYMBOLS := $(call rwildcard,$(SRC_SYMBOLS_PATH)/,*.lib)
+
 # MODELS = SIM800C
 MODELS =
 TARGETS =
 TEMP_FILES =
 
-all: models images models_x3d
+all: add_to_kicad models images models_x3d
 
 # Color table {diffuseColor},{specularColor}
 #
@@ -39,6 +49,32 @@ COLOR_SHIELD := 0.5 0.5 0.5
 COLOR_LABEL := 1.0 1.0 1.0
 # Pin1 red marker
 COLOR_RED_DOT := 1.0 0 0
+
+add_to_kicad: $(SYMBOLS)
+	if ! grep -q LOCAL_BADEN $(KICAD_COMMON_CONFIG); then \
+		sed -i.bak '/\[EnvironmentVariables\]/a LOCAL_BADEN=$(shell pwd)' $(KICAD_COMMON_CONFIG); \
+	fi
+
+	# sed -i.bak '2i\ \ (lib (name LocalBaden)(type Legacy)(uri $(abspath $<))(options "")(descr ""))' $(KICAD_LIB_CONFIG);
+	if ! grep -q LocalBaden $(KICAD_LIB_CONFIG); then \
+		echo "Add symbols as global KiCad library"; \
+		sed -i.bak '2i\ \ (lib (name LocalBaden)(type Legacy)(uri $${LOCAL_BADEN}/$(SYMBOLS))(options "")(descr ""))' $(KICAD_LIB_CONFIG); \
+	fi
+
+	# sed -i.bak '2i\ \ (lib (name LocalBaden)(type KiCad)(uri $(abspath $(FOOTPRINTS_PATH)))(options "")(descr ""))' $(KICAD_FP_LIB_CONFIG);
+	if ! grep -q LocalBaden $(KICAD_FP_LIB_CONFIG); then \
+		echo "Add footprints as global KiCad library"; \
+		sed -i.bak '2i\ \ (lib (name LocalBaden)(type KiCad)(uri $${LOCAL_BADEN}/$(FOOTPRINTS_PATH))(options "")(descr ""))' $(KICAD_FP_LIB_CONFIG); \
+	fi
+
+
+
+
+$(SYMBOLS): $(ALL_SYMBOLS)
+	echo "EESchema-LIBRARY Version 2.4" > $(SYMBOLS)
+	for i in $(ALL_SYMBOLS); do \
+		tail -n +2 $$i >> $(SYMBOLS); \
+	done
 
 # Создает правило для сборки фрагмента компонента.
 define rule

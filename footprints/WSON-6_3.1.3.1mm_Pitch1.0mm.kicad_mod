@@ -1,4 +1,4 @@
-(module WSON-6_3.1.3.1mm_Pitch1.0mm (layer F.Cu) (tedit 5A67181C)
+(module WSON-6_3.1.3.1mm_Pitch1.0mm (layer F.Cu) (tedit 5AE30475)
   (descr https://bitbucket.org/badenwork/pcb-elbrus-01/downloads/HDC1080DMBT.pdf)
   (tags "WSON6 1.0")
   (attr smd)
@@ -31,7 +31,7 @@
   (pad 7 smd rect (at 0 0) (size 1.5 2.4) (layers F.Cu F.Mask))
   (pad 7 smd rect (at 0 -0.65) (size 1.2 0.8) (layers F.Cu F.Paste))
   (pad 7 smd rect (at 0 0.65) (size 1.2 0.8) (layers F.Cu F.Paste))
-  (model ${KIPRJMOD}/3dshapes/HDC1080DM.wrl
+  (model ${LOCAL_BADEN}/3dshapes/HDC1080DM.wrl
     (at (xyz 0 0 0))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 0))

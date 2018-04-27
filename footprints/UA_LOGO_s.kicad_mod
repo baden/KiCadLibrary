@@ -1,9 +1,9 @@
-(module UA_LOGO (layer F.Cu) (tedit 57F00780)
+(module UA_LOGO_s (layer F.Cu) (tedit 57EFF745)
   (fp_text reference G*** (at 0 0) (layer F.SilkS) hide
-    (effects (font (thickness 0.3)))
+    (effects (font (size 1.524 1.524) (thickness 0.3)))
   )
-  (fp_text value UA_LOGO (at 0.75 0) (layer F.SilkS) hide
-    (effects (font (thickness 0.3)))
+  (fp_text value UA_LOGO (at 0.75 0) (layer F.SilkS)
+    (effects (font (size 1.524 1.524) (thickness 0.3)))
   )
   (fp_poly (pts (xy 0.000415 -2.822445) (xy 0.001311 -2.82153) (xy 0.002634 -2.820081) (xy 0.004332 -2.818161)
     (xy 0.006351 -2.815832) (xy 0.008639 -2.813156) (xy 0.011143 -2.810195) (xy 0.01381 -2.807013)

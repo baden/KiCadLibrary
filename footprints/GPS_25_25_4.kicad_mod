@@ -1,4 +1,4 @@
-(module BaDen_Working:GPS_25_25_4 (layer F.Cu) (tedit 56C4BB02)
+(module GPS_25_25_4 (layer F.Cu) (tedit 56C4BB02)
   (descr GPS_ANTENNA_25x25x4_ANT2525B00DT1516S.pdf)
   (tags "GPS ANTENNA")
   (fp_text reference A1 (at 0 0.5) (layer F.SilkS)
