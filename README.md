@@ -13,6 +13,37 @@ make
 ```
 
 
+## Roadmap
+
+Подумываю перейти с OpenSCAD на CADQuery.
+
+Проба пера:
+
+```
+make 3dshapes/CadTemplate.wrl
+```
+
+http://dcowden.github.io/cadquery/
+
+Вот для вдохновления: https://github.com/easyw/kicad-3d-models-in-freecad/
+
+```
+sudo apt-get install freecad
+sudo apt-get install python-setuptools
+sudo easy_install pip
+sudo pip install cadquery
+```
+
+Для версии FreeCAD 0.17 и старше, модуль
+https://github.com/FreeCAD/FreeCAD-addons/blob/master/README.md встроен
+и установка не требуется.
+
+
+sudo apt-get install python-pyside.qtnetwork
+https://github.com/jmwright/cadquery-freecad-module/releases/download/v1.0.0.2/cadquery-freecad-module.zip
+cp -rf OpenPLM ~/.FreeCAD/Mod/
+
+
 # Дальнейшее описание не актуально!
 
 
