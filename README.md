@@ -20,7 +20,7 @@ make
 Проба пера:
 
 ```
-make 3dshapes/CadTemplate.wrl
+make 3dshapes/WQFN-30_4x6mm_P0.5mm.wrl
 ```
 
 http://dcowden.github.io/cadquery/
@@ -32,7 +32,17 @@ sudo apt-get install freecad
 sudo apt-get install python-setuptools
 sudo easy_install pip
 sudo pip install cadquery
+
 ```
+
+Дополнительно стоит глянуть на
+
+```
+sudo pip install numpy==1.14.3
+# sudo pip install numpy numpy-stl
+sudo pip install solidpython
+```
+
 
 Для версии FreeCAD 0.17 и старше, модуль
 https://github.com/FreeCAD/FreeCAD-addons/blob/master/README.md встроен

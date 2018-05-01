@@ -15,17 +15,17 @@ scale(scale) color("White") translate([0, 0, A]) rotate([0,0,0]) {
 
   translate([0,  0.5, 0]) scale([fscale, fscale, 1]) {
     linear_extrude(height=lab_h, center=false) {
-      text("Microchip", font=font, valign="center", halign="center", $fn=8);
+      text("LM76003", font=font, valign="center", halign="center", $fn=8);
     }
   }
 
-  translate([0, -0.5, 0]) scale([fscale, fscale, 1]) {
+  /* translate([0, -0.5, 0]) scale([fscale, fscale, 1]) {
     linear_extrude(height=lab_h, center=false) {
-      text("PIC32MX170F256D", font=font, valign="center", halign="center", $fn=8);
+      text("Texas Instruments", font=font, valign="center", halign="center", $fn=8);
     }
-  }
+  } */
 
-  translate([-2.3, 2.3, 0]) {
+  translate([-1.4, 2.3, 0]) {
     cylinder(r = 0.15, h = lab_h, $fn = 12);
   }
 
