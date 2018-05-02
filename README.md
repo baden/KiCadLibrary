@@ -23,7 +23,8 @@ make
 make 3dshapes/WQFN-30_4x6mm_P0.5mm.wrl
 ```
 
-http://dcowden.github.io/cadquery/
+* http://dcowden.github.io/cadquery/
+* https://github.com/fragmuffin/cqparts
 
 Вот для вдохновления: https://github.com/easyw/kicad-3d-models-in-freecad/
 

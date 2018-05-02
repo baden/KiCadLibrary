@@ -42,7 +42,7 @@ def w_shape(f, obj):
     f.write("    Shape {\n")
     w_appearance(f, obj[1])
     if hasattr(obj[0], "val"):
-        tes = obj[0].val().scale(1/2.54).tessellate(0.05)
+        tes = obj[0].val().scale(1/2.54).tessellate(0.1)
         v = [(p.x, p.y, p.z) for p in tes[0]]
         i = tes[1]
         w_geometry(f, v, i)
