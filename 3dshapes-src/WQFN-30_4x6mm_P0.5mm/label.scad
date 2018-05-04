@@ -11,13 +11,13 @@ fscale = 0.04;
 lab_h = 0.01;
 
 // Label
-scale(scale) color("White") translate([0, 0, A]) rotate([0,0,0]) {
+color("White") translate([0, 0, A]) rotate([0,0,0]) {
 
-  translate([0,  0.5, 0]) scale([fscale, fscale, 1]) {
+  /* translate([0,  0.5, 0]) scale([fscale, fscale, 1]) {
     linear_extrude(height=lab_h, center=false) {
-      text("LM76003", font=font, valign="center", halign="center", $fn=8);
+      text("LM76003", font=font, valign="center", halign="center", $fn=2);
     }
-  }
+  } */
 
   /* translate([0, -0.5, 0]) scale([fscale, fscale, 1]) {
     linear_extrude(height=lab_h, center=false) {
