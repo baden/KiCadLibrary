@@ -5,9 +5,21 @@ D Unpolarized capacitor
 K capacitor cap
 $ENDCMP
 #
+$CMP CP
+D Capacitor Polar
+$ENDCMP
+#
 $CMP DDTC115TE7F
 D Transistor NPN (pre-biased)
 K npn transistor
+$ENDCMP
+#
+$CMP L
+D Inductor
+$ENDCMP
+#
+$CMP MCP1703A-3302_SOT23-regul
+D MCP1703T-3302E
 $ENDCMP
 #
 $CMP R

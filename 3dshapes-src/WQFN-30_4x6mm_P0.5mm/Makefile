@@ -18,3 +18,5 @@ $(BUILD_PATH)/$(NAME).wrl: $(SRC_PATH)/$(NAME)/make.py $(TEMP_PATH)/$(NAME)/body
 	# echo "TBD $? to $@"
 	mkdir -p $(dir $@)
 	python $< $@ $(TEMP_PATH)/$(NAME)
+
+TARGETS += $(BUILD_PATH)/$(NAME).wrl

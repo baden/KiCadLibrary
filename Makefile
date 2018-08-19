@@ -1,5 +1,5 @@
 .SILENT:
-.PHONY: models images clean distclean add_to_kicad
+.PHONY: models images clean distclean add_to_kicad system_deps
 
 SRC_PATH := 3dshapes-src
 SRC_SYMBOLS_PATH := symbols-src
@@ -37,7 +37,7 @@ MODELS =
 TARGETS =
 TEMP_FILES =
 
-all: add_to_kicad models images models_x3d
+all: add_to_kicad system_deps models images models_x3d
 
 # Color table {diffuseColor},{specularColor}
 #
@@ -52,21 +52,50 @@ COLOR_LABEL := 1.0 1.0 1.0
 # Pin1 red marker
 COLOR_RED_DOT := 1.0 0 0
 
+system_deps:
+	if ! command -v "openscad" > /dev/null 2>&1; then \
+	  if [ "$(lsb_release -rs)" = "18.04" ]; then \
+			sudo add-apt-repository ppa:openscad/releases; \
+			sudo apt-get update; \
+		fi; \
+		echo -n "Installing openscad..."; \
+		sudo apt install openscad openscad-mcad -y; \
+		echo "TBD"; \
+	fi
+
+	if ! command -v "java" > /dev/null 2>&1; then \
+		sudo apt install default-jre -y; \
+	fi
+
+	if ! command -v "pip" > /dev/null 2>&1; then \
+		sudo apt install -y python-pip; \
+	fi
+
+	if ! command -v "freecad" > /dev/null 2>&1; then \
+		sudo apt install -y freecad; \
+		pip install git+https://github.com/dcowden/cadquery.git; \
+		pip install numpy-stl; \
+	fi
+
+	# apt install -y freecad libglu1-mesa python-pip
+
 add_to_kicad: $(SYMBOLS)
 	if ! grep -q LOCAL_BADEN $(KICAD_COMMON_CONFIG); then \
+	  echo -n "Patching kicad common config $(KICAD_COMMON_CONFIG)..."; \
 		sed -i.bak '/\[EnvironmentVariables\]/a LOCAL_BADEN=$(shell pwd)' $(KICAD_COMMON_CONFIG); \
+		echo "ok."; \
 	fi
 
-	# sed -i.bak '2i\ \ (lib (name LocalBaden)(type Legacy)(uri $(abspath $<))(options "")(descr ""))' $(KICAD_LIB_CONFIG);
 	if ! grep -q LocalBaden $(KICAD_SYM_LIB_CONFIG); then \
-		echo "Add symbols as global KiCad library"; \
-		sed -i.bak '2i\ \ (lib (name LocalBaden)(type Legacy)(uri $${LOCAL_BADEN}/$(SYMBOLS))(options "")(descr ""))' $(KICAD_SYN_LIB_CONFIG); \
+	  echo -n "Patching kicad symbol config $(KICAD_SYM_LIB_CONFIG)..."; \
+		sed -i.bak '2i\ \ (lib (name LocalBaden)(type Legacy)(uri $${LOCAL_BADEN}/$(SYMBOLS))(options "")(descr ""))' $(KICAD_SYM_LIB_CONFIG); \
+		echo "ok."; \
 	fi
 
-	# sed -i.bak '2i\ \ (lib (name LocalBaden)(type KiCad)(uri $(abspath $(FOOTPRINTS_PATH)))(options "")(descr ""))' $(KICAD_FP_LIB_CONFIG);
 	if ! grep -q LocalBaden $(KICAD_FP_LIB_CONFIG); then \
-		echo "Add footprints as global KiCad library"; \
+	  echo -n "Patching kicad footprint config $(KICAD_FP_LIB_CONFIG)..."; \
 		sed -i.bak '2i\ \ (lib (name LocalBaden)(type KiCad)(uri $${LOCAL_BADEN}/$(FOOTPRINTS_PATH))(options "")(descr ""))' $(KICAD_FP_LIB_CONFIG); \
+		echo "ok."; \
 	fi
 
 # $(SYMBOLS): $(ALL_SYMBOLS)
@@ -180,7 +209,7 @@ $(MODELS_PATH)/%.x3d: $(BUILD_PATH)/%.wrl
 
 # IMAGES := $(TARGETS:%1.wrl:)
 # IMAGES := $(patsubst $(BUILD_PATH)/%.wrl,$(IMAGES_PATH)/%.gif,$(TARGETS))
-IMAGES += $(patsubst $(BUILD_PATH)/%.wrl,$(IMAGES_PATH)/%.png,$(TARGETS))
+# IMAGES += $(patsubst $(BUILD_PATH)/%.wrl,$(IMAGES_PATH)/%.png,$(TARGETS))
 
 # $(IMAGES_PATH)/%.png: $(SRC_PATH)/%/%.scad
 # $(IMAGES_PATH)/$(1).png: $(SRC_PATH)/$(1)/$(1).scad
