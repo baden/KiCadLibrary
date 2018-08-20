@@ -1,4 +1,4 @@
-(module PTS525_SM15_SMTR2_LFS (layer F.Cu) (tedit 5A54FF46)
+(module PTS525_SM15_SMTR2_LFS (layer F.Cu) (tedit 5AF56738)
   (tags "SWITCH 4PIN")
   (attr smd)
   (fp_text reference K1 (at 0 -3.55) (layer F.SilkS)
@@ -24,6 +24,11 @@
   (pad 2 smd rect (at 3 -1.86) (size 1 1) (layers F.Cu F.Paste F.Mask))
   (pad 1 smd rect (at -3 -1.86) (size 1 1) (layers F.Cu F.Paste F.Mask))
   (model ${KIPRJMOD}/3dshapes/PTS525_SM15_SMTR2_LFS.wrl
+    (at (xyz 0 0 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 0))
+  )
+  (model ${LOCAL_BADEN}/3dshapes/PTS525_SM15_SMTR2_LFS.wrl
     (at (xyz 0 0 0))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 0))

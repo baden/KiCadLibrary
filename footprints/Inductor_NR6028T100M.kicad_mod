@@ -1,4 +1,4 @@
-(module Inductor_NR6028T100M (layer F.Cu) (tedit 580940CB)
+(module Inductor_NR6028T100M (layer F.Cu) (tedit 5AF5651C)
   (fp_text reference L1 (at 0 0) (layer F.Fab)
     (effects (font (size 0.5 0.5) (thickness 0.05)))
   )
@@ -24,6 +24,11 @@
   (pad 1 smd rect (at -2.35 0) (size 1.6 5.7) (layers F.Cu F.Paste F.Mask))
   (pad 2 smd rect (at 2.35 0) (size 1.6 5.7) (layers F.Cu F.Paste F.Mask))
   (model ${KIPRJMOD}/3dshapes/Inductor_NR6028T100M.wrl
+    (at (xyz 0 0 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 0))
+  )
+  (model ${LOCAL_BADEN}/3dshapes/Inductor_NR6028T100M.wrl
     (at (xyz 0 0 0))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 0))

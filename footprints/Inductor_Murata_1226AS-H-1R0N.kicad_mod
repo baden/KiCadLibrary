@@ -1,8 +1,8 @@
-(module Inductor_Murata_1226AS-H-1R0N (layer F.Cu) (tedit 5A65E0F8)
+(module Inductor_Murata_1226AS-H-1R0N (layer F.Cu) (tedit 5AF57306)
   (descr "http://search.murata.co.jp/Ceramy/image/img/P02/J(E)TE243B-0039_DEM2815C_reference.pdf")
   (tags "inductor murata smd")
   (attr smd)
-  (fp_text reference L2 (at 0 0 -180) (layer F.Fab)
+  (fp_text reference L2 (at 0 0 -90) (layer F.Fab)
     (effects (font (size 0.5 0.5) (thickness 0.05)))
   )
   (fp_text value 1uH (at 0 2.65) (layer F.Fab) hide
@@ -20,12 +20,12 @@
   (fp_line (start 1.4 1) (end 0.9 1.5) (layer F.Fab) (width 0.05))
   (pad 2 smd rect (at 0 1.35) (size 1.2 0.9) (layers F.Cu F.Paste F.Mask))
   (pad 1 smd rect (at 0 -1.35) (size 1.2 0.9) (layers F.Cu F.Paste F.Mask))
-  (model Inductors_SMD.3dshapes/L_Wuerth_MAPI-2510.wrl
+  (model ${KIPRJMOD}/3dshapes/Inductor_DEM2815C.wrl
     (at (xyz 0 0 0))
     (scale (xyz 1 1 1))
-    (rotate (xyz 0 0 0))
+    (rotate (xyz 0 0 -90))
   )
-  (model ${KISYS3DMOD}/Inductor_SMD.3dshapes/L_Wuerth_MAPI-2510.wrl
+  (model ${LOCAL_BADEN}/3dshapes/Inductor_DEM2815C.wrl
     (at (xyz 0 0 0))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 0))

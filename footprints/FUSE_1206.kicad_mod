@@ -1,8 +1,8 @@
-(module FUSE_1206 (layer F.Cu) (tedit 58089E69)
+(module FUSE_1206 (layer F.Cu) (tedit 5AF5BB34)
   (descr "PTC Resettabler SMD 1206, reflow soldering, AVX (see FSMD1206_Series.pdf)")
   (tags "PTC Fuzetec 1206")
   (attr smd)
-  (fp_text reference F3 (at 0 0) (layer F.Fab)
+  (fp_text reference F2 (at 0 0 -270) (layer F.Fab)
     (effects (font (size 0.5 0.5) (thickness 0.05)))
   )
   (fp_text value A2 (at 0 0) (layer F.Fab) hide
@@ -21,6 +21,11 @@
   (pad 1 smd rect (at -1.5 0) (size 1 1.9) (layers F.Cu F.Paste F.Mask))
   (pad 2 smd rect (at 1.5 0) (size 1 1.9) (layers F.Cu F.Paste F.Mask))
   (model ${KIPRJMOD}/3dshapes/FUSE_1206.wrl
+    (at (xyz 0 0 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 0))
+  )
+  (model ${LOCAL_BADEN}/3dshapes/FUSE_1206.wrl
     (at (xyz 0 0 0))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 0))
