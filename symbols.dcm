@@ -1,5 +1,11 @@
 EESchema-DOCLIB  Version 2.0
 #
+$CMP ASSR-V622-502E
+D Isolated Linear Photocoupler, High Gain, Wideband, DIP8/SMD-DIP8
+K Isolated Linear Photocoupler
+F http://www.vishay.com/docs/83622/il300.pdf
+$ENDCMP
+#
 $CMP C
 D Unpolarized capacitor
 K capacitor cap
@@ -18,7 +24,11 @@ $CMP L
 D Inductor
 $ENDCMP
 #
-$CMP MCP1703A-3302_SOT23-regul
+$CMP LM2931AD
+D MCP1703T-3302E
+$ENDCMP
+#
+$CMP MCP1703A-3302_SOT23-regul_0
 D MCP1703T-3302E
 $ENDCMP
 #

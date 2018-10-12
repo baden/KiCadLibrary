@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP IL300
+D Isolated Linear Photocoupler, High Gain, Wideband, DIP8/SMD-DIP8
+K Isolated Linear Photocoupler
+F http://www.vishay.com/docs/83622/il300.pdf
+$ENDCMP
+#
+#End Doc Library
