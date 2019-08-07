@@ -1,4 +1,4 @@
-# My KiCad Library
+﻿# My KiCad Library
 
 ## Использование библиотеки в проекте.
 
@@ -11,6 +11,10 @@ git clone git@github.com:baden/KiCadLibrary.git
 cd KiCadLibrary
 make
 ```
+
+
+виндовс
+
 
 
 ## Roadmap
