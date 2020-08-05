@@ -41,5 +41,8 @@ $CMP TC2030-MCP
 D Programming connector
 F http://www.tag-connect.com/Materials/TC2030-MCP-NL%20PCB%20Footprint.pdf
 $ENDCMP
+$CMP MMA8652FC
+D Accelerometer
+$ENDCMP
 #
 #End Doc Library
