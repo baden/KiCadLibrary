@@ -46,4 +46,9 @@ D Programming connector
 F http://www.tag-connect.com/Materials/TC2030-MCP-NL%20PCB%20Footprint.pdf
 $ENDCMP
 #
+$CMP ST1S14PHR
+D ST1S14PHR
+F http://www.st.com/internet/com/TECHNICAL_RESOURCES/TECHNICAL_LITERATURE/DATASHEET/CD00285678.pdf
+$ENDCMP
+#
 #End Doc Library
