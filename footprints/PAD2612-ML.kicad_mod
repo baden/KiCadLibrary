@@ -1,0 +1,14 @@
+(footprint "PAD2612-ML" (version 20210108) (generator pcbnew) (layer "F.Cu")
+  (tedit 5D8913D4)
+  (fp_text reference "W2_1" (at 0 1.2) (layer "F.SilkS") hide
+    (effects (font (size 1 1) (thickness 0.15)))
+    (tstamp 55a63625-77bd-4593-ac0a-12c6cd110c42)
+  )
+  (fp_text value "AKK+" (at 0 -0.5) (layer "F.Fab") hide
+    (effects (font (size 1 1) (thickness 0.15)))
+    (tstamp ad384416-f215-45fd-9c37-3b9c148eac00)
+  )
+  (pad "1" smd circle (at 0 0) (size 1.4 1.4) (layers "F.Cu" "F.Mask") (tstamp 8032a4f4-259a-4cde-a2ef-2b168a40ec53))
+  (pad "1" thru_hole circle (at 0 0) (size 2.6 2.6) (drill 1.2) (layers *.Cu "B.Mask")
+    (clearance 0.6) (tstamp 9fcddcc1-0204-48a0-98f3-5c76ed331644))
+)
