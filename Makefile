@@ -110,7 +110,7 @@ define rule
 $(TEMP_PATH)/$(1).stl: $(SRC_PATH)/$(1).scad
 	@echo "$$<  →  $$@"
 	@$(MKDIR) $(dir $(TEMP_PATH)/$(1).stl)
-	@$(OPENSCAD) $$< -o $$@ 2>$$@.err
+	@$(OPENSCAD) $$< -o $(abspath $$@) 2>$$@.err
 
 # $(BUILD_PATH)/$(1).wrl: $(TEMP_PATH)/$(1).wrl
 # 	@echo "$$<  →  $$@"
