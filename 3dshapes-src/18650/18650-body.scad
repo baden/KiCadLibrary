@@ -1,7 +1,7 @@
 include <defines.scad>
 
-d = 18;
-b_h =  65;
+d = 18.32;
+b_h =  65.02;
 
 module body(){
   rotate([90,0,0])
